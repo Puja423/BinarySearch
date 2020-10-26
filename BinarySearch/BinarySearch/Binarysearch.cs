@@ -74,16 +74,34 @@ namespace BinarySearch
             }
             return maxSize - 1;
         }
+        public void Search(T data)
+        {
+            if (start.data.CompareTo(data) == 0)
+            {
+                Console.WriteLine("Found");
+                return;
+            }
+            if (start.data.CompareTo(data) < 0)
+            {
+                start = start.Rightside;
+                Search(data);
 
-        public void Display(MyBinaryNode<T>start )
+            }
+            else
+            {
+                start = start.leftside;
+                Search(data);
+            }
+        }
+        public void Display(MyBinaryNode<T> start)
         {
             Console.WriteLine("Start : {0}", start.data);
             if (start.leftside != null)
             {
-                Console.WriteLine("Left :" +start.leftside.data);
+                Console.WriteLine("Left :" + start.leftside.data);
             }
             if (start.Rightside != null)
-                Console.WriteLine("Right :" +start.Rightside.data);
+                Console.WriteLine("Right :" + start.Rightside.data);
             if (start.leftside != null)
             {
                 Display(start.leftside);
